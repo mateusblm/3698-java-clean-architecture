@@ -1,6 +1,7 @@
 package br.com.alura.codechella.infra.gateways;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import br.com.alura.codechella.application.gateways.RepositorioDeUsuario;
 import br.com.alura.codechella.domain.entities.usuario.Usuario;
@@ -25,6 +26,6 @@ public class RepositorioDeUsuarioJpa implements RepositorioDeUsuario{
     }
 
     public List<Usuario> listarTodos(){
-        return null;
+        return usuarioRepository.findAll().stream().map(mapper::fromEntity).collect(Collectors.toList());
     }
 }
